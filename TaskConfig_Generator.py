@@ -177,17 +177,18 @@ def makeBlockTrials(params):
     return trialDict_list
 
 #%% run configuration
+for k in range(0, params['variants']):
+    var_id = "var" + str(k)
 
-for k in range(0,params['variants']):
-    var_id="var"+str(k)
+    train_trials = makeBlockTrials(params) 
+    test_trials = makeBlockTrials(params)
 
+    # Save train and test data separately
+    train_df = pd.DataFrame(train_trials)
+    train_df.to_csv(path_or_buf=params['saveDir'] + '/trainConfig_' + var_id + '.csv')
 
-    trialDict_list = makeBlockTrials(params)
-    task_df = pd.DataFrame(trialDict_list)
-    task_df.to_csv(path_or_buf = params['saveDir']+'/trialConfig_'+var_id+'.csv')
- 
+    test_df = pd.DataFrame(test_trials)
+    test_df.to_csv(path_or_buf=params['saveDir'] + '/testConfig_' + var_id + '.csv')
 
 config_df = pd.Series(params)
-config_df.to_csv(path_or_buf = params['saveDir']+'/TaskConfig.csv')
-
-
+config_df.to_csv(path_or_buf=params['saveDir'] + '/TaskConfig.csv')
