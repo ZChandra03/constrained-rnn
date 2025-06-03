@@ -37,7 +37,7 @@ params['block_type']=['report','predict']
 
 # trial dictionary fields (rt is also in sec)
 params['trial_fields'] = ['blockNum','blockDifficulty','sigma','blockType','trialInBlock','trueHazard','evidence','states','trueVal']
-params['variants']=20
+params['variants']=50
 
 #  Save directory
 params['saveDir'] = os.getcwd()+'/variants'

@@ -13,16 +13,6 @@ import numpy as np
 from scipy.stats import norm
 from scipy.stats import beta
 
-def evaluate_bayesian_accuracy(data_subset, hs, mu1=-1, mu2=1, sigma=0.1):
-    correct = []
-    for ev_tensor, label_tensor in data_subset:
-        ev = ev_tensor.squeeze().numpy().tolist()
-        true_val = int(label_tensor.item()) * 2 - 1  # Convert from 0/1 → -1/1
-        _, _, _, pred = BayesianObserver(ev, mu1, mu2, sigma, hs)
-        correct.append(pred == true_val)
-    return np.mean(correct)
-
-
 #%%  example values- these would be extracted from each trial's data
 
 
